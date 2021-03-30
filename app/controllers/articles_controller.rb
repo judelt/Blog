@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
-# A frequent practice is to place the standard CRUD actions in each
-# controller in the following order: index, show, new, edit, create, update
-# and destroy. 
+  # we want the user to be authenticated on every action except index and show
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  # A frequent practice is to place the standard CRUD actions in each
+  # controller in the following order: index, show, new, edit, create, update
+  # and destroy. 
   def index
     @articles = Article.all
   end
